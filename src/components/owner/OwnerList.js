@@ -23,7 +23,8 @@ const OwnerList = () => {
   // Finally we use map() to "loop over" the Owners array to show a list of Owner cards
   return (
     <div className="container-cards">
-      {owners.map(owner => <OwnerCard />)}
+      {owners.map(owner => 
+      <OwnerCard key={owner.id} owner={owner} />)}
     </div>
   );
 };
