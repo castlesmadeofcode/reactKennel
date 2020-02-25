@@ -14,6 +14,10 @@ const EmployeeList = () => {
       setEmployees(employeesFromAPI)
     });
   };
+  const deleteEmployee = id => {
+    EmployeeManager.delete(id)
+      .then(() => EmployeeManager.getAll().then(setEmployees));
+  };
 
   // got the Employees from the API on the component's first render
   useEffect(() => {
@@ -24,7 +28,8 @@ const EmployeeList = () => {
   return (
     <div className="container-cards">
       {employees.map(employee => 
-       <EmployeeCard key={employee.id} employee={employee}/>)}
+       <EmployeeCard key={employee.id} employee={employee}
+       deleteEmployee={deleteEmployee}/>)}
     </div>
   );
 };
