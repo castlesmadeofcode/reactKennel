@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import OwnerManager from '../../modules/OwnerManager';
-import './OwnerDetail.css'
+import React, { useState, useEffect } from "react";
+import OwnerManager from "../../modules/OwnerManager";
+import "./OwnerDetail.css";
 
 const OwnerDetail = props => {
   const [owner, setOwner] = useState({ name: "", phoneNumber: "" });
@@ -8,14 +8,13 @@ const OwnerDetail = props => {
 
   useEffect(() => {
     //get(id) from OwnerManager and hang on to the data; put it into state
-    OwnerManager.get(props.ownerId)
-      .then(owner => {
-        setOwner({
-          name: owner.name,
-          phoneNumber: owner.phoneNumber
-        });
-        setIsLoading(false);
+    OwnerManager.get(props.ownerId).then(owner => {
+      setOwner({
+        name: owner.name,
+        phoneNumber: owner.phoneNumber
       });
+      setIsLoading(false);
+    });
   }, [props.ownerId]);
 
   const handleDelete = () => {
@@ -29,9 +28,10 @@ const OwnerDetail = props => {
   return (
     <div className="card">
       <div className="card-content">
-        <picture>
-        </picture>
-        <h3>Name: <span style={{ color: 'darkslategrey' }}>{owner.name}</span></h3>
+        <picture></picture>
+        <h3>
+          Name: <span style={{ color: "darkslategrey" }}>{owner.name}</span>
+        </h3>
         <p>Phone Number: {owner.phoneNumber}</p>
         <button type="button" disabled={isLoading} onClick={handleDelete}>
           Discharge
@@ -39,6 +39,6 @@ const OwnerDetail = props => {
       </div>
     </div>
   );
-}
+};
 
 export default OwnerDetail;

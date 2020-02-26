@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import LocationManager from '../../modules/LocationManager';
-import './LocationDetail.css'
+import React, { useState, useEffect } from "react";
+import LocationManager from "../../modules/LocationManager";
+import "./LocationDetail.css";
 
 const LocationDetail = props => {
   const [location, setLocation] = useState({ name: "" });
@@ -8,13 +8,12 @@ const LocationDetail = props => {
 
   useEffect(() => {
     //get(id) from LocationManager and hang on to the data; put it into state
-    LocationManager.get(props.locationId)
-      .then(location => {
-        setLocation({
-          name: location.name,
-        });
-        setIsLoading(false);
+    LocationManager.get(props.locationId).then(location => {
+      setLocation({
+        name: location.name
       });
+      setIsLoading(false);
+    });
   }, [props.locationId]);
 
   const handleDelete = () => {
@@ -28,15 +27,16 @@ const LocationDetail = props => {
   return (
     <div className="card">
       <div className="card-content">
-        <picture>
-        </picture>
-        <h3>Name: <span style={{ color: 'darkslategrey' }}>{location.name}</span></h3>
+        <picture></picture>
+        <h3>
+          Name: <span style={{ color: "darkslategrey" }}>{location.name}</span>
+        </h3>
         <button type="button" disabled={isLoading} onClick={handleDelete}>
           Discharge
         </button>
       </div>
     </div>
   );
-}
+};
 
 export default LocationDetail;
