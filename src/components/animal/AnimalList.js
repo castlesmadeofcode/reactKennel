@@ -5,7 +5,8 @@ import AnimalManager from '../../modules/AnimalManager';
 
 const AnimalList = () => {
   // The initial state is an empty array
-  console.log("at top of comments");
+  //setAnimals is used to change the state of animals
+  // console.log("at top of comments");
   const [animals, setAnimals] = useState([]);
 
 
@@ -14,7 +15,7 @@ const AnimalList = () => {
     // After the data comes back from the API, we
     //  use the setAnimals function to update state
     return AnimalManager.getAll().then(animalsFromAPI => {
-      console.log("about to call setAnimals()");
+      // console.log("about to call setAnimals()");
       setAnimals(animalsFromAPI)
     });
   };
@@ -28,13 +29,13 @@ const AnimalList = () => {
 
 
   useEffect  (() => {
-    console.log("inside useEffect()");
+    // console.log("inside useEffect()");
     getAnimals();
   }, []);
 
   // getAnimals();
 
-  console.log("about to return JSX", animals);
+  // console.log("about to return JSX", animals);
   // Finally we use map() to "loop over" the animals array to show a list of animal cards
   return (
     <div className="container-cards">
