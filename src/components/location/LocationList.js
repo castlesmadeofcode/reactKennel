@@ -14,7 +14,6 @@ const LocationList = () => {
       setLocations(locationsFromAPI)
     });
   };
-
   const deleteLocation = id => {
     LocationManager.delete(id)
       .then(() => LocationManager.getAll().then(setLocations));
