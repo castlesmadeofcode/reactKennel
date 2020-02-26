@@ -4,6 +4,7 @@ import './OwnerDetail.css'
 
 const OwnerDetail = props => {
   const [owner, setOwner] = useState({ name: "", phoneNumber: "" });
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     //get(id) from OwnerManager and hang on to the data; put it into state
@@ -13,8 +14,17 @@ const OwnerDetail = props => {
           name: owner.name,
           phoneNumber: owner.phoneNumber
         });
+        setIsLoading(false);
       });
   }, [props.ownerId]);
+
+  const handleDelete = () => {
+    //invoke the delete function in OwnerManger and re-direct to the owner list.
+    setIsLoading(true);
+    OwnerManager.delete(props.ownerId).then(() =>
+      props.history.push("/owners")
+    );
+  };
 
   return (
     <div className="card">
@@ -23,6 +33,9 @@ const OwnerDetail = props => {
         </picture>
         <h3>Name: <span style={{ color: 'darkslategrey' }}>{owner.name}</span></h3>
         <p>Phone Number: {owner.phoneNumber}</p>
+        <button type="button" disabled={isLoading} onClick={handleDelete}>
+          Discharge
+        </button>
       </div>
     </div>
   );

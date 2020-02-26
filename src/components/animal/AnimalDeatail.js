@@ -8,7 +8,10 @@ import "./AnimalDetail.css";
 const AnimalDetail = props => {
   const [animal, setAnimal] = useState({ name: "", breed: "" });
   const [isLoading, setIsLoading] = useState(true);
+  // By putting isLoading in the component's state, we can trigger a re-render
+  //  by changing its value.
   //initial value of isLoading = true
+
   
   //isLoading is passed to disabled in line 50
   //when disabled = true the button is disabled
@@ -38,6 +41,8 @@ const AnimalDetail = props => {
         //redirects the user to animals page after delete by pushing /animals to history
       );
     };
+
+    
     
 
 

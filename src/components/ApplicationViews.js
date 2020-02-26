@@ -48,7 +48,8 @@ const ApplicationViews = () => {
       }} />
       <Route path="/locations/:locationId(\d+)" render={(props) => {
         // Pass the locationId to the LocationDetailComponent
-        return <LocationDetail locationId={parseInt(props.match.params.locationId)} />
+        return <LocationDetail locationId={parseInt(props.match.params.locationId)}
+        {...props} />
       }} />
 
       <Route exact path="/employees" render={(props) => {
@@ -56,7 +57,8 @@ const ApplicationViews = () => {
       }} />
       <Route path="/employees/:employeeId(\d+)" render={(props) => {
         // Pass the employeeId to the EmployeeDetailComponent
-        return <EmployeeDetail employeeId={parseInt(props.match.params.employeeId)} />
+        return <EmployeeDetail employeeId={parseInt(props.match.params.employeeId)}
+        {...props} />
       }} />
 
       <Route exact path="/owners" render={(props) => {
@@ -64,7 +66,8 @@ const ApplicationViews = () => {
       }} />
       <Route path="/owners/:ownerId(\d+)" render={(props) => {
         // Pass the ownerId to the OwnerDetailComponent
-        return <OwnerDetail ownerId={parseInt(props.match.params.ownerId)} />
+        return <OwnerDetail ownerId={parseInt(props.match.params.ownerId)}
+        {...props} />
       }} />
 
     </React.Fragment>
