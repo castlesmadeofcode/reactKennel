@@ -29,28 +29,21 @@ const ApplicationViews = () => {
         }}
       />
       <Route
-        path="/animals/new"
+        exact
+        path="/animals"
         render={props => {
           if (isAuthenticated()) {
-            return <AnimalForm {...props} />;
+            return <AnimalList {...props} />;
           } else {
             return <Redirect to="/login" />;
           }
         }}
       />
       <Route
-        exact
-        path="/animals"
-        render={props => {
-          return <AnimalList {...props} />;
-        }}
-      />
-      <Route
         path="/animals/new"
         render={props => {
-          return <AnimalForm {...props} />;
           if (isAuthenticated()) {
-            return <AnimalList {...props} />;
+            return <AnimalForm {...props} />;
           } else {
             return <Redirect to="/login" />;
           }
@@ -76,13 +69,21 @@ const ApplicationViews = () => {
         exact
         path="/locations"
         render={props => {
-          return <LocationList {...props} />;
+          if (isAuthenticated()) {
+            return <LocationList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route
         path="/locations/new"
         render={props => {
-          return <LocationForm {...props} />;
+          if (isAuthenticated()) {
+            return <LocationForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route
@@ -101,13 +102,21 @@ const ApplicationViews = () => {
         exact
         path="/employees"
         render={props => {
-          return <EmployeeList {...props} />;
+          if (isAuthenticated()) {
+            return <EmployeeList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route
         path="/employees/new"
         render={props => {
-          return <EmployeeForm {...props} />;
+          if (isAuthenticated()) {
+            return <EmployeeForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route
@@ -126,13 +135,21 @@ const ApplicationViews = () => {
         exact
         path="/owners"
         render={props => {
-          return <OwnerList {...props} />;
+          if (isAuthenticated()) {
+            return <OwnerList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route
         path="/owners/new"
         render={props => {
-          return <OwnerForm {...props} />;
+          if (isAuthenticated()) {
+            return <OwnerForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route
