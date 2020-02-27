@@ -9,7 +9,7 @@ const AnimalCard = props => {
       <div className="card-content">
         <picture>
           <img
-            // src={require(`./img/animal--${props.animal.id}.jpeg`)}
+            // src={require(`./animal--${props.animal.id}.jpeg`)}
             src={require(`./dog.svg`)}
             alt="My Dog"
           />

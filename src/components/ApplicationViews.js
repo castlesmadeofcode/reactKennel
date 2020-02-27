@@ -10,6 +10,9 @@ import LocationDetail from "./location/LocationDetail";
 import EmployeeDetail from "./employee/EmployeeDetail";
 import OwnerDetail from "./owner/OwnerDetail";
 import AnimalForm from "./animal/AnimalForm";
+import LocationForm from "./location/LocationForm";
+import EmployeeForm from "./employee/EmployeeForm";
+import OwnerForm from "./owner/OwnerForm";
 import Login from "./auth/Login";
 
 // Check if credentials are in session storage returns true/false
@@ -39,6 +42,13 @@ const ApplicationViews = () => {
         exact
         path="/animals"
         render={props => {
+          return <AnimalList {...props} />;
+        }}
+      />
+      <Route
+        path="/animals/new"
+        render={props => {
+          return <AnimalForm {...props} />;
           if (isAuthenticated()) {
             return <AnimalList {...props} />;
           } else {
@@ -66,7 +76,13 @@ const ApplicationViews = () => {
         exact
         path="/locations"
         render={props => {
-          return <LocationList />;
+          return <LocationList {...props} />;
+        }}
+      />
+      <Route
+        path="/locations/new"
+        render={props => {
+          return <LocationForm {...props} />;
         }}
       />
       <Route
@@ -85,7 +101,13 @@ const ApplicationViews = () => {
         exact
         path="/employees"
         render={props => {
-          return <EmployeeList />;
+          return <EmployeeList {...props} />;
+        }}
+      />
+      <Route
+        path="/employees/new"
+        render={props => {
+          return <EmployeeForm {...props} />;
         }}
       />
       <Route
@@ -104,7 +126,13 @@ const ApplicationViews = () => {
         exact
         path="/owners"
         render={props => {
-          return <OwnerList />;
+          return <OwnerList {...props} />;
+        }}
+      />
+      <Route
+        path="/owners/new"
+        render={props => {
+          return <OwnerForm {...props} />;
         }}
       />
       <Route
