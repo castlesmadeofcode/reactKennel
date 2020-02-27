@@ -164,7 +164,17 @@ const ApplicationViews = () => {
           );
         }}
       />
-      <Route path="/login" component={Login} />
+      <Route
+        exact
+        path="/login"
+        render={props => {
+          if (isAuthenticated()) {
+            return <Redirect to="/" />;
+          } else {
+            return <Login {...props} />;
+          }
+        }}
+      />
     </React.Fragment>
   );
 };
