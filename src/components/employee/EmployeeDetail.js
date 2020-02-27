@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import EmployeeManager from '../../modules/EmployeeManager';
-import './EmployeeDetail.css'
+import React, { useState, useEffect } from "react";
+import EmployeeManager from "../../modules/EmployeeManager";
+import "./EmployeeDetail.css";
 
 const EmployeeDetail = props => {
   const [employee, setEmployee] = useState({ name: "" });
@@ -8,13 +8,12 @@ const EmployeeDetail = props => {
 
   useEffect(() => {
     //get(id) from EmployeeManager and hang on to the data; put it into state
-    EmployeeManager.get(props.employeeId)
-      .then(employee => {
-        setEmployee({
-          name: employee.name,
-        });
-        setIsLoading(false);
+    EmployeeManager.get(props.employeeId).then(employee => {
+      setEmployee({
+        name: employee.name
       });
+      setIsLoading(false);
+    });
   }, [props.employeeId]);
 
   const handleDelete = () => {
@@ -28,16 +27,16 @@ const EmployeeDetail = props => {
   return (
     <div className="card">
       <div className="card-content">
-        <picture>
-        </picture>
-        <h3>Name: <span style={{ color: 'darkslategrey' }}>{employee.name}</span></h3>
+        <picture></picture>
+        <h3>
+          Name: <span style={{ color: "darkslategrey" }}>{employee.name}</span>
+        </h3>
         <button type="button" disabled={isLoading} onClick={handleDelete}>
           Discharge
         </button>
-
       </div>
     </div>
   );
-}
+};
 
 export default EmployeeDetail;
