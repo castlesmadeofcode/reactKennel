@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import React from "react";
 import Home from "./home/Home";
 import AnimalList from "./animal/AnimalList";
@@ -9,6 +9,11 @@ import AnimalDetail from "./animal/AnimalDeatail";
 import LocationDetail from "./location/LocationDetail";
 import EmployeeDetail from "./employee/EmployeeDetail";
 import OwnerDetail from "./owner/OwnerDetail";
+import AnimalForm from "./animal/AnimalForm";
+import Login from "./auth/Login";
+
+// Check if credentials are in session storage returns true/false
+const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
 const ApplicationViews = () => {
   return (
@@ -20,12 +25,25 @@ const ApplicationViews = () => {
           return <Home />;
         }}
       />
-
+      <Route
+        path="/animals/new"
+        render={props => {
+          if (isAuthenticated()) {
+            return <AnimalForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
       <Route
         exact
         path="/animals"
         render={props => {
-          return <AnimalList />;
+          if (isAuthenticated()) {
+            return <AnimalList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route
@@ -63,7 +81,6 @@ const ApplicationViews = () => {
           );
         }}
       />
-
       <Route
         exact
         path="/employees"
@@ -83,7 +100,6 @@ const ApplicationViews = () => {
           );
         }}
       />
-
       <Route
         exact
         path="/owners"
@@ -103,6 +119,7 @@ const ApplicationViews = () => {
           );
         }}
       />
+      <Route path="/login" component={Login} />
     </React.Fragment>
   );
 };
