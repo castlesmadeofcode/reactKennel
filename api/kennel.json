@@ -3,12 +3,14 @@
     {
       "id": 1,
       "name": "cuddles",
-      "breed": "Poodle"
+      "breed": "Poodle",
+      "employeeId": 2
     },
     {
       "id": 2,
       "name": "shiny boi",
-      "breed": "German Shepherd"
+      "breed": "German Shepherd",
+      "employeeId": 3
     },
     {
       "id": 3,
@@ -17,10 +19,10 @@
       "employeeId": 1
     },
     {
-      "name": "Toots Mcgee",
-      "breed": "Tootasauras",
       "id": 4,
-      "employeeId": 2
+      "name": "Cutes Mcgee",
+      "breed": "Cuteasauras",
+      "employeeId": 3
     }
   ],
   "locations": [
