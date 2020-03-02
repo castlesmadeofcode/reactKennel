@@ -41,8 +41,10 @@ const AnimalDetail = props => {
     <div className="card">
       <div className="card-content">
         <picture>
-
-          {/* /* <img src={require(`./animal--${props.animalId}.jpeg`)} alt="My Dog" /> */}
+          {/* <img
+            src={require(`./img/animal--${props.animalId}.jpeg`)}
+            alt="My Dog"
+          /> */}
           <img src={require(`./dog.svg`)} alt="My Dog" />
         </picture>
         <h3>
