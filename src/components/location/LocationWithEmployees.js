@@ -4,14 +4,17 @@ import EmployeeCard from "../employee/EmployeeCard";
 import EmployeeManager from "../../modules/EmployeeManager";
 
 const LocationWithEmployees = props => {
+  console.log(props);
   const [location, setLocation] = useState({});
   const [employees, setEmployees] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  console.log("emp", employees);
 
   useEffect(() => {
     //got here now make call to get location with employee
     LocationManager.getWithEmployees(props.match.params.locationId).then(
       APIResult => {
+        console.log(APIResult);
         setLocation(APIResult);
         setEmployees(APIResult.employees);
       }

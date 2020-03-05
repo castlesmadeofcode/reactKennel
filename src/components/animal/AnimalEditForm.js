@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AnimalManager from "../../modules/AnimalManager";
 import EmployeeManager from "../../modules/EmployeeManager";
-
 import "./AnimalForm.css";
 
 const AnimalEditForm = props => {

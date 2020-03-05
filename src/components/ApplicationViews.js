@@ -19,6 +19,7 @@ import LocationEditForm from "./location/LocationEditForm";
 import EmployeeEditForm from "./employee/EmployeeEditForm";
 import OwnerEditForm from "./owner/OwnerEditForm";
 import EmployeeWithAnimals from "./employee/EmployeeWithAnimals";
+import LocationWithEmployees from "./location/LocationWithEmployees";
 
 // Check if credentials are in session storage returns true/false
 const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
@@ -130,6 +131,12 @@ const ApplicationViews = () => {
           } else {
             return <Redirect to="/login" />;
           }
+        }}
+      />
+      <Route
+        path="/locations/:locationId(\d+)/details"
+        render={props => {
+          return <LocationWithEmployees {...props} />;
         }}
       />
       <Route
