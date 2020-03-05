@@ -15,6 +15,14 @@ const LocationCard = props => {
         </Link>
         <button
           type="button"
+          onClick={() => {
+            props.history.push(`/locations/${props.kennelLocation.id}/details`);
+          }}
+        >
+          Employee Details
+        </button>
+        <button
+          type="button"
           onClick={() =>
             props.history.push(`/locations/${props.kennelLocation.id}/edit`)
           }
