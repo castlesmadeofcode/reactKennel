@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import EmployeeManager from "../../modules/EmployeeManager";
+import LocationManager from "../../modules/LocationManager";
 import "./EmployeeForm.css";
 
 const EmployeeEditForm = props => {
-  const [employee, setEmployee] = useState({ name: "" });
+  const [employee, setEmployee] = useState({
+    name: "",
+    locationId: ""
+  });
+  const [locations, setLocation] = useState([]);
+  console.log(locations);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {
@@ -19,7 +25,8 @@ const EmployeeEditForm = props => {
     // This is an edit, so we need the id
     const editedEmployee = {
       id: props.match.params.employeeId,
-      name: employee.name
+      name: employee.name,
+      locationId: parseInt(employee.locationId)
     };
 
     EmployeeManager.update(editedEmployee).then(() =>
@@ -30,6 +37,9 @@ const EmployeeEditForm = props => {
   useEffect(() => {
     EmployeeManager.get(props.match.params.employeeId).then(employee => {
       setEmployee(employee);
+      LocationManager.get(locations).then(location => {
+        setLocation(location);
+      });
       setIsLoading(false);
     });
   }, []);
@@ -48,6 +58,20 @@ const EmployeeEditForm = props => {
               value={employee.name}
             />
             <label htmlFor="name">Employee name</label>
+
+            <select
+              className="form-control"
+              id="locationId"
+              value={employee.locationId}
+              onChange={handleFieldChange}
+            >
+              {locations.map(location => (
+                <option key={location.id} value={location.id}>
+                  {location.name}
+                </option>
+              ))}
+            </select>
+            <label htmlFor="locationId">Location</label>
           </div>
           <div className="alignRight">
             <button
