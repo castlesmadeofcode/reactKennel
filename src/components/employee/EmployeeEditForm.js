@@ -9,7 +9,6 @@ const EmployeeEditForm = props => {
     locationId: ""
   });
   const [locations, setLocation] = useState([]);
-  console.log(locations);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {
