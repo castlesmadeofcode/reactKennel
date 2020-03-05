@@ -18,6 +18,7 @@ import AnimalEditForm from "./animal/AnimalEditForm";
 import LocationEditForm from "./location/LocationEditForm";
 import EmployeeEditForm from "./employee/EmployeeEditForm";
 import OwnerEditForm from "./owner/OwnerEditForm";
+import EmployeeWithAnimals from "./employee/EmployeeWithAnimals";
 
 // Check if credentials are in session storage returns true/false
 const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
@@ -176,6 +177,12 @@ const ApplicationViews = () => {
           } else {
             return <Redirect to="/login" />;
           }
+        }}
+      />
+      <Route
+        path="/employees/:employeeId(\d+)/details"
+        render={props => {
+          return <EmployeeWithAnimals {...props} />;
         }}
       />
       <Route

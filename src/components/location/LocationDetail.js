@@ -6,6 +6,14 @@ const LocationDetail = props => {
   const [location, setLocation] = useState({ name: "" });
   const [isLoading, setIsLoading] = useState(true);
 
+  const handleDelete = () => {
+    //invoke the delete function in LocationManger and re-direct to the location list.
+    setIsLoading(true);
+    LocationManager.delete(props.locationId).then(() =>
+      props.history.push("/locations")
+    );
+  };
+
   useEffect(() => {
     //get(id) from LocationManager and hang on to the data; put it into state
     LocationManager.get(props.locationId).then(location => {
@@ -15,14 +23,6 @@ const LocationDetail = props => {
       setIsLoading(false);
     });
   }, [props.locationId]);
-
-  const handleDelete = () => {
-    //invoke the delete function in LocationManger and re-direct to the location list.
-    setIsLoading(true);
-    LocationManager.delete(props.locationId).then(() =>
-      props.history.push("/locations")
-    );
-  };
 
   return (
     <div className="card">
