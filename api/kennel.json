@@ -37,17 +37,17 @@
     {
       "id": 1,
       "name": "Scooter Pa",
-      "locationID": 1
+      "locationId": 1
     },
     {
       "id": 2,
       "name": "Borgorph",
-      "locationID": 2
+      "locationId": 2
     },
     {
       "id": 3,
       "name": "Slim",
-      "locationID": 3
+      "locationId": 3
     }
   ],
   "owners": [
